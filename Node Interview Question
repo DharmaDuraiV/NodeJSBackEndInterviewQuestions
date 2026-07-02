@@ -1,40 +1,98 @@
 
- 1. What is Node.js, and why is it used? 
-👉 Node.js is a runtime environment built on Chrome’s V8 engine. It’s used for building scalable, high-performance, event-driven applications like APIs, real-time apps, and microservices.
+# 1. What is Node.js, and why is it used?
 
- 2. What are the main features of Node.js? 
-👉 Asynchronous I/O, single-threaded, event-driven, fast execution with V8 engine, cross-platform, large package ecosystem (NPM).
+Node.js is a JavaScript runtime environment built on Google's V8 JavaScript Engine that allows developers to execute JavaScript outside the browser. 
+It follows a single-threaded, event-driven, and non-blocking I/O architecture, making it highly efficient for handling multiple concurrent requests. 
+Because of these features, Node.js is widely used for developing scalable backend applications such as REST APIs, real-time chat applications, streaming services, and microservices.
 
- 3. Explain the V8 engine in Node.js. 
-👉 V8 is Google’s open-source JavaScript engine that compiles JavaScript into machine code for fast execution.
+---
 
- 4. What is non-blocking I/O? 
-👉 It allows Node.js to continue executing other tasks while I/O operations (like file or DB access) run in the background.
+# 2. What are the main features of Node.js?
 
- 5. Difference between synchronous and asynchronous code in Node.js? 
-👉 Synchronous: Executes line by line, blocking further code.
-👉 Asynchronous: Executes without waiting, uses callbacks, promises, or async/await.
+Node.js provides several powerful features, including asynchronous programming, non-blocking I/O, and event-driven architecture. 
+It uses Google's V8 Engine for high-speed execution, follows a single-threaded model for efficient resource utilization, 
+supports cross-platform development, and provides access to a vast ecosystem of packages through NPM. 
+These features make Node.js lightweight, scalable, and suitable for modern backend development.
 
- 6. What is the Event Loop in Node.js? 
-👉 It’s the mechanism that handles asynchronous operations, allowing Node.js to process non-blocking tasks in a single thread.
+---
 
- 7. Difference between `setTimeout()`, `setImmediate()`, and `process.nextTick()`? 
-👉 `setTimeout`: Executes after specified delay.
-👉 `setImmediate`: Executes after the current poll phase.
-👉 `process.nextTick`: Executes immediately after the current operation.
+# 3. Explain the V8 Engine in Node.js.
 
- 8. What are Node.js modules? 
-👉 Modules are reusable blocks of code. Node.js supports  CommonJS (`require`)  and  ES Modules (`import`) .
+The V8 Engine is Google's open-source JavaScript engine written in C++. 
+It compiles JavaScript code directly into machine code using Just-In-Time (JIT) compilation instead of interpreting it line by line. 
+This significantly improves execution speed and application performance. 
+Since Node.js is built on the V8 Engine, it can execute JavaScript efficiently while also providing optimized memory management through automatic garbage collection.
 
- 9. What is NPM? Difference between `dependencies` and `devDependencies`? 
-👉 NPM is Node’s package manager.
+---
 
-* `dependencies`: Needed for production.
-* `devDependencies`: Only needed for development/testing.
+# 4. What is Non-Blocking I/O?
 
- 10. Difference between `require()` and `import`? 
-👉 `require()` → CommonJS (synchronous).
-👉 `import` → ES Modules (asynchronous, modern standard).
+Non-blocking I/O is a programming model in which Node.js does not wait for input/output operations, 
+such as reading files, querying databases, or making API calls, to complete before executing the next line of code. 
+Instead, these operations are performed asynchronously in the background, 
+and once they are completed, the corresponding callback, promise, or async function is executed. 
+This approach improves performance and allows Node.js to handle thousands of concurrent requests efficiently.
+
+---
+
+# 5. Difference between Synchronous and Asynchronous Code?
+
+Synchronous code executes one statement at a time and waits for each operation to complete before moving to the next statement. 
+This means the execution is blocked until the current task finishes. 
+In contrast, asynchronous code allows long-running operations, such as file handling or database queries, 
+to execute in the background without blocking the main thread. 
+Node.js achieves asynchronous programming using callbacks, promises, and async/await, resulting in better performance and responsiveness.
+
+---
+
+# 6. What is the Event Loop in Node.js?
+
+The Event Loop is one of the core components of Node.js that enables asynchronous and non-blocking programming.
+It continuously monitors completed asynchronous operations and executes their callback functions. 
+Although Node.js uses a single JavaScript thread, 
+the Event Loop allows it to handle multiple client requests simultaneously by efficiently managing asynchronous tasks,
+making it highly scalable for I/O-intensive applications.
+
+---
+
+# 7. Difference between `setTimeout()`, `setImmediate()`, and `process.nextTick()`?
+
+All three functions are used to schedule code execution, but they execute at different stages of the Event Loop.
+`process.nextTick()` has the highest priority and executes immediately after the current operation, before the Event Loop continues. 
+`setTimeout()` executes after the specified delay during the Timer phase, 
+while `setImmediate()` executes during the Check phase after the Poll phase. 
+Understanding their execution order is important for writing efficient asynchronous applications.
+
+---
+
+# 8. What are Node.js Modules?
+
+Modules are reusable units of code that help organize an application into smaller, 
+maintainable components. Node.js provides built-in modules such as `fs`, `http`, and `path`,
+while developers can also create custom modules or install third-party modules using NPM.
+Node.js supports both CommonJS modules using `require()` and ES Modules using `import`, making code easier to manage and reuse.
+
+---
+
+# 9. What is NPM? Difference between `dependencies` and `devDependencies`?
+
+NPM, or Node Package Manager, is the default package manager for Node.js. 
+It allows developers to install, update, remove, and manage project dependencies. 
+Packages listed under `dependencies` are required for the application to run in production,
+such as Express or Mongoose. Packages listed under `devDependencies` are only required during development,
+such as Nodemon, ESLint, and Jest, and are not necessary in the production environment.
+
+---
+
+# 10. Difference between `require()` and `import`?
+
+`require()` is part of the CommonJS module system and loads modules synchronously. 
+It is commonly used in older Node.js applications and works with `module.exports`. 
+`import` is part of the ES Module system, which is the modern JavaScript standard. 
+It supports static module loading, better optimization, 
+and improved maintainability by using the `export` keyword. 
+For modern Node.js applications, `import` is generally the recommended approach.
+
 
  11. What are global objects in Node.js? 
 👉 Examples: `__dirname`, `__filename`, `process`, `Buffer`, `console`, `global`.
